@@ -3,6 +3,8 @@ var mocha = require('gulp-mocha');
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var minifyCSS = require('gulp-minify-css');
+var sourcemaps = require('gulp-sourcemaps');
+var autoprefixer = require('gulp-autoprefixer');
 
 var src = 'src/';
 var dest = 'htdocs/';
@@ -33,8 +35,9 @@ gulp.task('test', function () {
 gulp.task('sass', function () {
   return  gulp.src([config.style.vendor, config.style.src])
     .pipe(sass())
+    .pipe(autoprefixer())
     .pipe(minifyCSS())
-    .pipe(concat('stylesheet.css'))
+    .pipe(concat('style.css'))
     .pipe(gulp.dest(config.style.dest));
 });
 
