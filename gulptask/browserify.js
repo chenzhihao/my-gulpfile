@@ -1,5 +1,8 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var watchify = require('watchify');
+var gutil = require('gulp-util');
 
 var config = require('../gulpconfig').browserify;
 
@@ -18,13 +21,17 @@ module.exports = function () {
       debug: config.debug
     });
 
-    var bundle = function () {
+    bundler = watchify(bundler);
+
+    bundler.on('update', bundle);
+
+    function bundle() {
+      gutil.log('Bundling', gutil.colors.green(bundleConfig.entries) + '...');
       return bundler
         .bundle()
-
-        .pipe(gulp.src(bundleConfig.outputName))
-        .pipe(gulp.dest(bundleConfig.dest))
-    };
+        .pipe(source(bundleConfig.outputName))
+        .pipe(gulp.dest(bundleConfig.dest));
+    }
 
     return bundle();
   };

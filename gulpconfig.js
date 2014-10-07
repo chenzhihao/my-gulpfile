@@ -25,7 +25,7 @@ module.exports = {
       {
         entries: src + 'scripts/browserify/index.js',
         dest: dest + 'javascript/browserify/',
-        outputName: 'index.js'
+        outputName: 'bundle.js'
       }
     ]
   }
