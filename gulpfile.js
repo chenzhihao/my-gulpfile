@@ -7,4 +7,4 @@ require('./gulptask')([
   'browserify'
 ]);
 
-gulp.task('default', ['watch', 'javascript', 'sass' ]);
+gulp.task('default', ['watch', 'javascript', 'sass', 'browserify' ]);

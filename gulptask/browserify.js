@@ -26,7 +26,7 @@ module.exports = function () {
     bundler.on('update', bundle);
 
     function bundle() {
-      gutil.log('Bundling', gutil.colors.green(bundleConfig.entries) + '...');
+      gutil.log('watchify', gutil.colors.green(bundleConfig.entries));
       return bundler
         .bundle()
         .pipe(source(bundleConfig.outputName))
