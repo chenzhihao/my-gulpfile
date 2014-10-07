@@ -11,6 +11,7 @@ var jsArraySeq = config.script.vendor.map(function (value, key) {
 module.exports = function () {
   //will concat vendor js as she sequence in jsArraySeq
   jsArraySeq.push(config.script.src);
+  jsArraySeq.push('!src/scripts/browserify/**/*.js')
   return gulp.src(jsArraySeq)
     .pipe(concat('script.js'))
     .pipe(uglify())
