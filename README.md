@@ -33,7 +33,8 @@
     (In fact gulp will export a singleton instance, you can also register your tasks in single file. This depends on ourself.)
 
 2. I have 4 tasks currently. Let's have a look into it.
-   * ** 'javascript' task**:
+   
+ **`javascript` task**:
 
     All our configuration is in the `'gulpconfig.js'` file. check it:
     
@@ -52,7 +53,7 @@
     
     After all the libs are concated, our own code in the `'src/scripts/non-browserify/**/*.js'` will concat togther. Finally our code here will concat to `'htdocs/javascript/script.js'`
 
-  * **"sass" task**:
+   **`sass` task**:
   
     All scss files it will be compile to css files. Check the configuration:
     ```js
@@ -66,7 +67,7 @@
     ```
     Also the vendor css will be concat at first, like js vendor files.
 
-  * **"Browserify" task:**
+  **`Browserify` task:**
   
     As the configuration:
     ```js
@@ -88,4 +89,13 @@
     ```
     It will browserify our code from the entry file, we can have mutiple entries.
     
-    The **watchify** is used too.
+    The **watchify** is used too!
+    
+  **`watch` task**
+  
+  ```js
+  //gulptask/watch.js
+  gulp.watch(config.script.src, ['javascript']);
+  gulp.watch(config.style.src, ['sass']);
+  ```
+  gulp watch will deal with `javascript` and `sass` task. And the watchify will deal with browserify code watch.
