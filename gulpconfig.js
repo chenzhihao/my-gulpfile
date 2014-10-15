@@ -4,6 +4,8 @@ var src = path.join(__dirname, 'src/')
   , dest = path.join(__dirname, 'htdocs/');
 
 module.exports = {
+  src: src,
+  dest: dest,
   script: {
     src: src + 'scripts/non-browserify/**/*.js ',
     vendor: ['jquery.js'],
